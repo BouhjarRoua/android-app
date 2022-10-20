@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,7 +22,8 @@ import com.google.android.material.navigation.NavigationView;
 public class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
-
+    private SharedPreferences mPreferences;
+    public static final String sharedPrefFile = "MyAuth";
     @Override
     public void setContentView(View view) {
         drawerLayout =(DrawerLayout) getLayoutInflater().inflate(R.layout.activity_drawer_base,null);
@@ -31,17 +33,21 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
         Toolbar toolbar = drawerLayout.findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
-        String username = getIntent().getStringExtra("username");
+      
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         NavigationView navigationView =drawerLayout.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Menu nav_Menu = navigationView.getMenu();
-        System.out.println(username);
-      /*  if(!username.equals("admin@gmail.com") && username!=null){
-        nav_Menu.findItem(R.id.nav_addfilm).setVisible(false);}else{
+        System.out.println(mPreferences.getString("email",""));
+        if(mPreferences.getString("email","").equals("admin@gmail.com")){
+
 
             nav_Menu.findItem(R.id.nav_addfilm).setVisible(true);
 
-        }*/
+        }else{
+            nav_Menu.findItem(R.id.nav_addfilm).setVisible(false);
+        }
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.menu_drawer_open,R.string.menu_drawer_close);
         drawerLayout.addDrawerListener(toggle);

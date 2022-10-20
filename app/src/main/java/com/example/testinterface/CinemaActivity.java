@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
@@ -30,7 +31,8 @@ public class CinemaActivity extends DrawerBaseActivity {
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
    // ActivityDrawerBaseBinding activityDrawerBaseBinding;
-
+   private SharedPreferences mPreferences;
+    public static final String sharedPrefFile = "MyAuth";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,7 +47,15 @@ public class CinemaActivity extends DrawerBaseActivity {
         admin =findViewById(R.id.admin);
         session = findViewById(R.id.textView);
         //String username = getIntent().getStringExtra("username");
-        session.setText(username);
+       // session.setText(username);
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        if(mPreferences.contains("email")){
+
+            session.setText(mPreferences.getString("email",""));
+
+
+        }
+        //session.setText( mPreferences.getString("email","") );
        autoCompleteTextView= findViewById(R.id.auto_complete_text);
         adapterItems = new ArrayAdapter<>(this, R.layout.list_item, items);
         autoCompleteTextView.setAdapter(adapterItems);
