@@ -14,16 +14,19 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.FrameLayout;
+
+import android.widget.TextView;
 
 import com.example.testinterface.databinding.ActivityCinemaBinding;
-import com.example.testinterface.databinding.ActivityDrawerBaseBinding;
+
 
 import java.util.Objects;
 
 public class CinemaActivity extends DrawerBaseActivity {
     ActivityCinemaBinding activityCinemaBinding ;//= bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
     String[] items= {"Pathe","ABC","lecolisée"};
+    TextView session;
+    TextView admin;
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
    // ActivityDrawerBaseBinding activityDrawerBaseBinding;
@@ -34,12 +37,15 @@ public class CinemaActivity extends DrawerBaseActivity {
         super.onCreate(savedInstanceState);
         activityCinemaBinding =activityCinemaBinding.inflate(getLayoutInflater());
         //activityCinemaBinding = bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
-
+        String username = getIntent().getStringExtra("username") ;
         setContentView(activityCinemaBinding.getRoot());
         //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         allocateActivityTitle("Cinema");
 
-
+        admin =findViewById(R.id.admin);
+        session = findViewById(R.id.textView);
+        //String username = getIntent().getStringExtra("username");
+        session.setText(username);
        autoCompleteTextView= findViewById(R.id.auto_complete_text);
         adapterItems = new ArrayAdapter<>(this, R.layout.list_item, items);
         autoCompleteTextView.setAdapter(adapterItems);
@@ -48,6 +54,9 @@ public class CinemaActivity extends DrawerBaseActivity {
             String item =parent.getItemAtPosition(position).toString();
 
         });
+        /*if(username.equals("admin@gmail.com")){
+            admin.setText("drrrrr");
+        }*/
 
 
 

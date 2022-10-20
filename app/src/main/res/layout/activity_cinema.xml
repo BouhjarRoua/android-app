@@ -32,10 +32,18 @@
         android:layout_width="426dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:text="hellooooooooooooo"
 
         app:layout_anchor="@+id/textInputLayout"
         app:layout_anchorGravity="center" />
+
+    <TextView
+        android:id="@+id/admin"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+
+        app:layout_anchor="@+id/textInputLayout"
+        app:layout_anchorGravity="center"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

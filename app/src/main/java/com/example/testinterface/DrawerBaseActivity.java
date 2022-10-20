@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,9 +31,17 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
         Toolbar toolbar = drawerLayout.findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
-
+        String username = getIntent().getStringExtra("username");
         NavigationView navigationView =drawerLayout.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Menu nav_Menu = navigationView.getMenu();
+        System.out.println(username);
+      /*  if(!username.equals("admin@gmail.com") && username!=null){
+        nav_Menu.findItem(R.id.nav_addfilm).setVisible(false);}else{
+
+            nav_Menu.findItem(R.id.nav_addfilm).setVisible(true);
+
+        }*/
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.menu_drawer_open,R.string.menu_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -41,17 +50,23 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         drawerLayout.closeDrawer(GravityCompat.START);
-        switch (item.getItemId()){
-            case R.id.nav_cinema:
-                startActivity(new Intent(this,CinemaActivity.class));
-                overridePendingTransition(0,0);
-                break;
-            case R.id.nav_profile:
-                startActivity(new Intent(this,ProfileActivity.class));
-                overridePendingTransition(0,0);
-                break;
+
+            switch (item.getItemId()) {
+                case R.id.nav_cinema:
+                    startActivity(new Intent(this, CinemaActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
+                case R.id.nav_profile:
+                    startActivity(new Intent(this, ProfileActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
+                case R.id.nav_addfilm:
+                    startActivity(new Intent(this, AddFilmActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
+
+
         }
         return false;
     }

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+
+   >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        app:layout_constraintBottom_toBottomOf="@+id/InputPoster"
+        app:layout_constraintTop_toBottomOf="@+id/InputPoster"
+        tools:context=".AddFilmActivity">
+
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/addFilmLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Add Film"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/NameFilm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Name:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewNameFilm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addFilmLabel"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/textViewNameFilm"
+            android:layout_width="398dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="414dp"
+            android:background="@drawable/border"
+            android:hint=" Name:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- badalha imageuploader  -->
+
+        <!-- badalha dropdownmenu  -->
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/PosterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Poster:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/InputPoster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameFilm"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/InputPoster"
+            android:layout_width="398dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="64dp"
+            android:background="@drawable/border"
+
+            android:hint=" Poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameFilm" />
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/CinemaLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Cinema:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cinemafield"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputPoster" />
+
+        <EditText
+            android:id="@+id/cinemafield"
+            android:layout_width="403dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/border"
+
+            android:hint="  Cinema"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InputPoster" />
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Description:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionfield"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cinemafield"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/descriptionfield"
+            android:layout_width="402dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/border"
+            android:gravity="start|top"
+            android:hint="  Description"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonaddfilm"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_btn"
+            android:backgroundTint="#F1A157"
+            android:text="Add Film"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionfield" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+

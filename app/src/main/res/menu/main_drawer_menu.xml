@@ -5,5 +5,7 @@
             android:title="Cinema" />
         <item android:id="@+id/nav_profile"
             android:title="Profile" />
+        <item android:id="@+id/nav_addfilm"
+            android:title="AddFilm" />
     </group>
 </menu>

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.testinterface.Entity.User;
 import com.example.testinterface.database.AppDataBase;
 
 public class LoginActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
      private Intent intent;
    private  Button btnsignin;
     private AppDataBase database;
+    User user;
    private EditText email,password;
 
 
@@ -41,12 +43,17 @@ public class LoginActivity extends AppCompatActivity {
 
             if(database.userDAO().login(emailcheck,pwdcheck)) {
                 Toast.makeText(LoginActivity.this, "user logged", Toast.LENGTH_SHORT).show();
-                intent = new Intent(LoginActivity.this, CinemaActivity.class);
+                String username =emailcheck;
+
+                intent = new Intent(LoginActivity.this, CinemaActivity.class).putExtra("username",username);
                 startActivity(intent);
                 System.out.println(database.userDAO().getAll());
+                System.out.println(username);
 
-            }else{
-                Toast.makeText(LoginActivity.this, "email or password invalid", Toast.LENGTH_SHORT).show();
+            }else if (emailcheck.isEmpty() || pwdcheck.isEmpty()){
+                Toast.makeText(LoginActivity.this, "fill all fields!", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(LoginActivity.this, "credentials invalid!", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         password =findViewById(R.id.textViewPwd);
 
         btnregister = findViewById(R.id.buttonregister);
-
+//add button signin
         btnregister.setOnClickListener(e-> {
 
             database.userDAO().insertOne(new User(firstname.getText().toString(),lastname.getText().toString()
