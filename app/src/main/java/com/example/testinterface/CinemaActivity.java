@@ -4,6 +4,8 @@ import static com.example.testinterface.databinding.ActivityCinemaBinding.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -18,16 +20,22 @@ import android.widget.AutoCompleteTextView;
 
 import android.widget.TextView;
 
+import com.example.testinterface.Entity.Film;
+import com.example.testinterface.database.AppDataBase;
 import com.example.testinterface.databinding.ActivityCinemaBinding;
 
 
+import java.util.List;
 import java.util.Objects;
 
 public class CinemaActivity extends DrawerBaseActivity {
     ActivityCinemaBinding activityCinemaBinding ;//= bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
     String[] items= {"Pathe","ABC","lecolisée"};
     TextView session;
-    TextView admin;
+
+    RecyclerView rv;
+    List<Film> films;
+    private AppDataBase database;
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
    // ActivityDrawerBaseBinding activityDrawerBaseBinding;
@@ -39,15 +47,14 @@ public class CinemaActivity extends DrawerBaseActivity {
         super.onCreate(savedInstanceState);
         activityCinemaBinding =activityCinemaBinding.inflate(getLayoutInflater());
         //activityCinemaBinding = bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
-        String username = getIntent().getStringExtra("username") ;
+
         setContentView(activityCinemaBinding.getRoot());
         //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         allocateActivityTitle("Cinema");
+        database = AppDataBase.getAppDatabase(getApplicationContext());
 
-        admin =findViewById(R.id.admin);
         session = findViewById(R.id.textView);
-        //String username = getIntent().getStringExtra("username");
-       // session.setText(username);
+
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         if(mPreferences.contains("email")){
 
@@ -67,7 +74,11 @@ public class CinemaActivity extends DrawerBaseActivity {
         /*if(username.equals("admin@gmail.com")){
             admin.setText("drrrrr");
         }*/
-
+        films =database.filmDAO().getAll();
+        // films.add();
+        rv=findViewById(R.id.recyclerView2);
+        rv.setAdapter(new MyAdapter(films,this));
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
 
     }

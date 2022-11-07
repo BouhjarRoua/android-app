@@ -33,7 +33,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
         Toolbar toolbar = drawerLayout.findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
-      
+
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         NavigationView navigationView =drawerLayout.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
