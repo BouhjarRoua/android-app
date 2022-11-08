@@ -18,6 +18,8 @@ public interface FilmDAO {
     void delete(Film film);
     @Query("SELECT * FROM film")
     List<Film> getAll();
+    @Query("DELETE FROM film where id = :id")
+    void deleteById(int id);
 
 
 }

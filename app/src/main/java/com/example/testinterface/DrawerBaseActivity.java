@@ -43,9 +43,11 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
 
             nav_Menu.findItem(R.id.nav_addfilm).setVisible(true);
+            nav_Menu.findItem(R.id.nav_details).setVisible(true);
 
         }else{
             nav_Menu.findItem(R.id.nav_addfilm).setVisible(false);
+            nav_Menu.findItem(R.id.nav_details).setVisible(false);
         }
 
 
@@ -69,6 +71,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                     break;
                 case R.id.nav_addfilm:
                     startActivity(new Intent(this, AddFilmActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
+                case R.id.nav_details:
+                    startActivity(new Intent(this,DetailsActivity.class));
                     overridePendingTransition(0, 0);
                     break;
 
