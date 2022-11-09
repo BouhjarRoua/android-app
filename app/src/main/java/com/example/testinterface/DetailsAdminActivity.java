@@ -1,9 +1,7 @@
 package com.example.testinterface;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.PackageManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,11 +14,10 @@ import android.widget.TextView;
 import com.example.testinterface.Entity.Film;
 import com.example.testinterface.database.AppDataBase;
 import com.example.testinterface.databinding.ActivityDetailsBinding;
-import com.example.testinterface.databinding.ActivityProfileBinding;
 
 import java.util.List;
 
-public class DetailsActivity extends DrawerBaseActivity {
+public class DetailsAdminActivity extends DrawerBaseActivity {
 
     RecyclerView rv;
     private TextView affichertext;
@@ -43,9 +40,9 @@ public class DetailsActivity extends DrawerBaseActivity {
         films =database.filmDAO().getAll();
         // films.add();
 
-        if(ContextCompat.checkSelfPermission(DetailsActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        if(ContextCompat.checkSelfPermission(DetailsAdminActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(DetailsActivity.this,
+            ActivityCompat.requestPermissions(DetailsAdminActivity.this,
                   new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},Read_Permission);
         }
         films =database.filmDAO().getAll();

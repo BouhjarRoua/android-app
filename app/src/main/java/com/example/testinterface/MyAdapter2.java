@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Path;
 import android.net.Uri;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -53,6 +55,9 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         Uri dataUri = Uri.parse(films.get(position).getPoster() + data);
         Bitmap bb = Bitmap.createBitmap(dataUri.)*/
        // holder.picture.setImageBitmap(films.get(position).getPoster().);
+
+
+       // Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
         holder.picture.setImageURI(Uri.parse(films.get(position).getPoster()));
         holder.deletebtn.setOnClickListener(v->{
 

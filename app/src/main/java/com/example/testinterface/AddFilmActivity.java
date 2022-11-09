@@ -1,15 +1,12 @@
 package com.example.testinterface;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -22,8 +19,8 @@ import com.example.testinterface.database.AppDataBase;
 import com.example.testinterface.databinding.ActivityAddFilmBinding;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.stream.Stream;
 
 public class AddFilmActivity extends DrawerBaseActivity {
      private EditText name,description;
@@ -82,7 +79,10 @@ public class AddFilmActivity extends DrawerBaseActivity {
             startActivity(intent);
             System.out.println(database.filmDAO().getAll());
         });*/
+
+
         btnadd.setOnClickListener(n-> {
+
 
            onActivityResult(SELECT_PICTURE,RESULT_OK, ACTION_VIEW ) ;
 
@@ -103,6 +103,8 @@ public class AddFilmActivity extends DrawerBaseActivity {
             // SELECT_PICTURE constant
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
+
+
                 Uri selectedImageUri = data.getData();
                 System.out.println(selectedImageUri);
                 if (null != selectedImageUri) {
@@ -110,26 +112,27 @@ public class AddFilmActivity extends DrawerBaseActivity {
                    poster.setImageURI(selectedImageUri);
 
 
-                    InputStream imageStream = null;
-                    try {
-                        imageStream = getContentResolver().openInputStream(selectedImageUri);
-                        Bitmap finalPicture = BitmapFactory.decodeStream(imageStream);
-                        System.out.println(finalPicture);
-                        poster.setImageBitmap(finalPicture);
-                        database.filmDAO().insertOne(new Film(name.getText().toString(),poster.toString(),
-                               autoCompleteTextView.getText().toString(),description.getText().toString()));
-                    } catch (FileNotFoundException e) {
+                   // InputStream imageStream = null;
+                    //try {
+                       /* imageStream = getContentResolver().openInputStream(selectedImageUri);
+                        // Bitmap finalPicture = BitmapFactory.decodeStream(imageStream);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                        System.out.println(bitmap);
+                        poster.setImageBitmap(bitmap);*/
+                        database.filmDAO().insertOne(new Film(name.getText().toString(), selectedImageUri.toString(),
+                                autoCompleteTextView.getText().toString(), description.getText().toString()));
+                    /*} catch (IOException e) {
                         e.printStackTrace();
-                    }
-                    Bitmap finalPicture = BitmapFactory.decodeStream(imageStream);
+                    }*/
+                    /*Bitmap finalPicture = BitmapFactory.decodeStream(imageStream);
                     System.out.println(finalPicture);
-                    poster.setImageBitmap(finalPicture);
+                    poster.setImageBitmap(finalPicture);*/
                 }
 
             }
         }
 
-        Intent intent = new Intent(AddFilmActivity.this, DetailsActivity.class);
+        Intent intent = new Intent(AddFilmActivity.this, DetailsAdminActivity.class);
         startActivity(intent);
         Toast.makeText(AddFilmActivity.this, "Film Successfully added!", Toast.LENGTH_SHORT).show();
         System.out.println(database.filmDAO().getAll());

@@ -9,5 +9,7 @@
             android:title="AddFilm" />
         <item android:id="@+id/nav_details"
             android:title="Details" />
+        <item android:id="@+id/nav_logout"
+            android:title="Logout" />
     </group>
 </menu>
