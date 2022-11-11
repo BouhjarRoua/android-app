@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.name.setText(films.get(position).getName());
         holder.picture.setImageURI(Uri.parse(films.get(position).getPoster()));
         holder.cinema.setText(films.get(position).getCinema());
+
         holder.itemView.setOnClickListener(e->{
             intent.putExtra("name",films.get(position).getName());
             intent.putExtra("cinema",films.get(position).getCinema());
@@ -58,12 +60,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView name,cinema;
         ImageView picture;
         Button detailsfilm;
+        AutoCompleteTextView autoCompleteTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             detailsfilm=itemView.findViewById(R.id.detailsButton);
             name= itemView.findViewById(R.id.name);
             picture = itemView.findViewById(R.id.picture);
             cinema=itemView.findViewById(R.id.cinema);
+            autoCompleteTextView= itemView.findViewById(R.id.auto_complete_text);
         }
     }
 }

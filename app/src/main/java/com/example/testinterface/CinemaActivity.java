@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.Bundle;
+import android.os.Handler;
 import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,12 @@ import java.util.Objects;
 
 public class CinemaActivity extends DrawerBaseActivity {
     ActivityCinemaBinding activityCinemaBinding ;//= bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
-    String[] items= {"Pathe","ABC","lacolisee"};
+    String[] items= {"Pathe","ABC","lecolisee"};
     TextView session,namefilm,cinemafilm;
     Button detailsfilm;
-
-
+    Film f;
+    List<Film>films2;
+    String cinema;
     RecyclerView rv;
     List<Film> films;
     private AppDataBase database;
@@ -56,10 +58,10 @@ public class CinemaActivity extends DrawerBaseActivity {
 
         super.onCreate(savedInstanceState);
         activityCinemaBinding =activityCinemaBinding.inflate(getLayoutInflater());
-        //activityCinemaBinding = bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
+
 
         setContentView(activityCinemaBinding.getRoot());
-        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         allocateActivityTitle("Cinema");
         database = AppDataBase.getAppDatabase(getApplicationContext());
 
@@ -72,28 +74,45 @@ public class CinemaActivity extends DrawerBaseActivity {
 
 
         }
-        //session.setText( mPreferences.getString("email","") );
-       autoCompleteTextView= findViewById(R.id.auto_complete_text);
+
+       autoCompleteTextView= findViewById(R.id.auto_complete_text2);
         adapterItems = new ArrayAdapter<>(this, R.layout.list_item, items);
         autoCompleteTextView.setAdapter(adapterItems);
 
         autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
             String item =parent.getItemAtPosition(position).toString();
+            System.out.println(item);
+            cinema=item;
+            cinemafilm.setText(cinema);
 
+            films2=database.filmDAO().getByCinema(cinema);
+           if(item!=null){
+                rv = findViewById(R.id.recyclerView2);
+                rv.setAdapter(new MyAdapter(films2, this));
+                rv.setLayoutManager(new LinearLayoutManager(this));
+            }
         });
-        /*if(username.equals("admin@gmail.com")){
-            admin.setText("drrrrr");
-        }*/
+        cinemafilm = findViewById(R.id.testcinema);
+
+        System.out.println(cinema);
+
         if(ContextCompat.checkSelfPermission(CinemaActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(CinemaActivity.this,
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},Read_Permission);
         }
+
+
+
+
+        System.out.println(cinema);
         films =database.filmDAO().getAll();
-        // films.add();
-        rv=findViewById(R.id.recyclerView2);
-        rv.setAdapter(new MyAdapter(films,this));
-        rv.setLayoutManager(new LinearLayoutManager(this));
+
+                rv = findViewById(R.id.recyclerView2);
+                rv.setAdapter(new MyAdapter(films, this));
+                rv.setLayoutManager(new LinearLayoutManager(this));
+
+
 
 
 

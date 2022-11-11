@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class DetailsAdminActivity extends DrawerBaseActivity {
     RecyclerView rv;
     private TextView affichertext;
     private ImageView afficherimage;
+    private Button delete;
     List<Film> films;
     private AppDataBase database;
     public static  final int Read_Permission = 250;
@@ -29,14 +31,19 @@ public class DetailsAdminActivity extends DrawerBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityDetailsBinding = activityDetailsBinding.inflate(getLayoutInflater());
+        activityDetailsBinding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView( activityDetailsBinding.getRoot());
-        allocateActivityTitle("Details");
+        allocateActivityTitle("FilmList");
 
         database = AppDataBase.getAppDatabase(getApplicationContext());
       /*  affichertext=findViewById(R.id.textViewdis);
         afficherimage=findViewById(R.id.imageViewdis);*/
-
+        delete=findViewById(R.id.delete);
+        delete.setOnClickListener(v->{
+            database.filmDAO().deleteAll();
+            finish();
+            startActivity(getIntent());
+        });
         films =database.filmDAO().getAll();
         // films.add();
 

@@ -1,6 +1,7 @@
 package com.example.testinterface;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -26,7 +27,8 @@ public class AddFilmActivity extends DrawerBaseActivity {
      private EditText name,description;
     private Button btnadd,select;
     private ImageView poster;
-    String[] items= {"Pathe","ABC","lecolisée"};
+
+    String[] items= {"Pathe","ABC","lecolisee"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
 
@@ -112,7 +114,7 @@ public class AddFilmActivity extends DrawerBaseActivity {
                    poster.setImageURI(selectedImageUri);
 
 
-                   // InputStream imageStream = null;
+
                     //try {
                        /* imageStream = getContentResolver().openInputStream(selectedImageUri);
                         // Bitmap finalPicture = BitmapFactory.decodeStream(imageStream);

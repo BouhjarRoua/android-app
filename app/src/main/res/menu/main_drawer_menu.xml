@@ -8,7 +8,10 @@
         <item android:id="@+id/nav_addfilm"
             android:title="AddFilm" />
         <item android:id="@+id/nav_details"
-            android:title="Details" />
+            android:title="ListFilms" />
+        <item android:id="@+id/nav_displayuser"
+            android:title="ListUser" />
+
         <item android:id="@+id/nav_logout"
             android:title="Logout" />
     </group>

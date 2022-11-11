@@ -20,6 +20,10 @@ public interface FilmDAO {
     List<Film> getAll();
     @Query("DELETE FROM film where id = :id")
     void deleteById(int id);
+    @Query("SELECT * FROM film where cinema = :cinema")
+    List<Film> getByCinema(String cinema);
+    @Query("DELETE  FROM film")
+    void deleteAll();
 
 
 }
