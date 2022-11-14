@@ -11,7 +11,7 @@ import com.example.testinterface.DAO.UserDAO;
 import com.example.testinterface.Entity.Film;
 import com.example.testinterface.Entity.User;
 
-@Database(entities = {User.class,Film.class},version = 2,exportSchema = false)
+@Database(entities = {User.class,Film.class},version = 3,exportSchema = false)
 public abstract class AppDataBase extends RoomDatabase {
     private static AppDataBase instance;
     public abstract UserDAO userDAO();

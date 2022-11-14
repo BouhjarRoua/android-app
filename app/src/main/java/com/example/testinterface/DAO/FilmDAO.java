@@ -24,6 +24,9 @@ public interface FilmDAO {
     List<Film> getByCinema(String cinema);
     @Query("DELETE  FROM film")
     void deleteAll();
+    @Query( "UPDATE film SET participant ='' where id = :id")
+    int reserve (int id);
+
 
 
 }

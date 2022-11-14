@@ -16,6 +16,8 @@ public class Film {
     private String cinema;
     @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "participant")
+    private int participant;
 
     public Film() {
     }
@@ -25,6 +27,7 @@ public class Film {
         this.poster = poster;
         this.cinema = cinema;
         this.description = description;
+
     }
 
     public int getId() {
@@ -67,6 +70,14 @@ public class Film {
         this.description = description;
     }
 
+    public int getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(int participant) {
+        this.participant = participant;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
@@ -75,6 +86,7 @@ public class Film {
                 ", poster='" + poster + '\'' +
                 ", cinema='" + cinema + '\'' +
                 ", description='" + description + '\'' +
+                ", participant='" + participant + '\'' +
                 '}';
     }
 }
