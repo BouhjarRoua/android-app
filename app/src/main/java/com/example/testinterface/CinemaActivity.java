@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class CinemaActivity extends DrawerBaseActivity {
     ActivityCinemaBinding activityCinemaBinding ;//= bind(getLayoutInflater().inflate(R.layout.activity_cinema,));
-    String[] items= {"Pathe","ABC","lecolisee"};
+    String[] items= {"Pathe","ABC","le colisee"};
     TextView session,namefilm,cinemafilm;
     Button detailsfilm;
     Film f;

@@ -55,8 +55,8 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="340dp"
-        android:layout_height="84dp"
+        android:layout_width="342dp"
+        android:layout_height="61dp"
         android:layout_marginTop="272dp"
         android:background="@drawable/border"
         android:hint="  email"
@@ -82,8 +82,8 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="284dp"
-        android:layout_height="110dp"
+        android:layout_width="340dp"
+        android:layout_height="61dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/border"
         android:hint="@string/prompt_password"

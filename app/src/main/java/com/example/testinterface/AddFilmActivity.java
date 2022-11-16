@@ -28,7 +28,7 @@ public class AddFilmActivity extends DrawerBaseActivity {
     private Button btnadd,select;
     private ImageView poster;
 
-    String[] items= {"Pathe","ABC","lecolisee"};
+    String[] items= {"Pathe","ABC","le colisee"};
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapterItems;
 

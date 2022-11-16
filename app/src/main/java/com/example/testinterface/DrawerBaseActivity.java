@@ -41,11 +41,14 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
             nav_Menu.findItem(R.id.nav_addfilm).setVisible(true);
             nav_Menu.findItem(R.id.nav_details).setVisible(true);
-           // nav_Menu.findItem(R.id.nav_profile).setVisible(false);
+            nav_Menu.findItem(R.id.nav_profile).setVisible(false);
+            nav_Menu.findItem(R.id.nav_displayuser).setVisible(true);
 
         }else{
             nav_Menu.findItem(R.id.nav_addfilm).setVisible(false);
             nav_Menu.findItem(R.id.nav_details).setVisible(false);
+            nav_Menu.findItem(R.id.nav_profile).setVisible(false);
+            nav_Menu.findItem(R.id.nav_displayuser).setVisible(false);
 
 
         }
@@ -85,6 +88,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                     startActivity(new Intent(this, LoginActivity.class));
                     overridePendingTransition(0, 0);
                     break;
+
 
 
         }

@@ -39,10 +39,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.name.setText(films.get(position).getName());
         holder.picture.setImageURI(Uri.parse(films.get(position).getPoster()));
         holder.cinema.setText(films.get(position).getCinema());
-       // holder.id.setText(films.get(position).getId());
+        holder.participant.setText((String.valueOf(films.get(position).getParticipant())));
+
+        holder.id.setText((String.valueOf(films.get(position).getId())));
+
 
         holder.itemView.setOnClickListener(e->{
-          //  intent.putExtra("id",films.get(position).getId());
+            intent.putExtra("id",films.get(position).getId());
             intent.putExtra("name",films.get(position).getName());
             intent.putExtra("cinema",films.get(position).getCinema());
             intent.putExtra("picture",films.get(position).getPoster());
@@ -59,18 +62,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,cinema,id;
+        TextView name,cinema,id,participant;
         ImageView picture;
         Button detailsfilm;
         AutoCompleteTextView autoCompleteTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            detailsfilm=itemView.findViewById(R.id.detailsButton);
+            //detailsfilm=itemView.findViewById(R.id.detailsButton);
             name= itemView.findViewById(R.id.name);
             picture = itemView.findViewById(R.id.picture);
             cinema=itemView.findViewById(R.id.cinema);
-            id =itemView.findViewById(R.id.idtest);
+            id =itemView.findViewById(R.id.idfilmm);
             autoCompleteTextView= itemView.findViewById(R.id.auto_complete_text);
+            participant =itemView.findViewById(R.id.participant);
         }
     }
 }
